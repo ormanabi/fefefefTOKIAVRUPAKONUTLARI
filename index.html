@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toki Avrupa Konutları Orta Okulu - Resmi Öğrenci Gazetesi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+            user-select: none;
+        }
+        
+        .serif-font {
+            font-family: 'Merriweather', serif;
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Sansürlü/Bulanık Metin Stili */
+        .blurred-content {
+            filter: blur(8px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Jeff the Killer & Kaos Animasyonları */
+        @keyframes violent-shake {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            10% { transform: translate(-35px, -25px) rotate(-5deg) scale(1.12); }
+            20% { transform: translate(35px, 20px) rotate(5deg) scale(0.96); }
+            30% { transform: translate(-30px, 30px) rotate(-4deg) scale(1.18); }
+            40% { transform: translate(25px, -35px) rotate(4deg) scale(1.05); }
+            50% { transform: translate(-25px, 25px) rotate(-6deg) scale(1.22); }
+            60% { transform: translate(35px, 10px) rotate(6deg) scale(0.95); }
+            70% { transform: translate(-35px, -30px) rotate(-5deg) scale(1.15); }
+            80% { transform: translate(30px, 35px) rotate(4deg) scale(1.08); }
+            90% { transform: translate(-20px, -15px) rotate(-3deg) scale(1.2); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+        }
+
+        @keyframes jeff-strobe {
+            0% { filter: contrast(250%) brightness(120%); background-color: #000; }
+            20% { filter: invert(100%) contrast(400%); background-color: #fff; }
+            40% { filter: contrast(350%) saturate(400%) hue-rotate(-20deg); background-color: #7f1d1d; }
+            60% { filter: invert(90%) contrast(500%); background-color: #000; }
+            80% { filter: contrast(300%) brightness(150%); background-color: #dc2626; }
+            100% { filter: contrast(250%) brightness(120%); background-color: #000; }
+        }
+
+        @keyframes jeff-zoom-lunge {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.28) rotate(-3deg); }
+            50% { transform: scale(0.95) rotate(3deg); }
+            75% { transform: scale(1.38) rotate(-2deg); }
+        }
+
+        @keyframes glitch-text {
+            0% { transform: skew(0deg) scale(1); }
+            25% { transform: skew(-20deg) scale(1.08); filter: invert(1); }
+            50% { transform: skew(20deg) scale(0.95); }
+            75% { transform: skew(-10deg) scale(1.12); }
+            100% { transform: skew(0deg) scale(1); }
+        }
+
+        .chaos-shake {
+            animation: violent-shake 0.11s infinite;
+        }
+
+        .jeff-strobe-fx {
+            animation: jeff-strobe 0.09s infinite;
+        }
+
+        .jeff-lunge-fx {
+            animation: jeff-zoom-lunge 0.14s infinite;
+        }
+
+        .glitch-fx {
+            animation: glitch-text 0.16s infinite;
+        }
+
+        /* Sahte Spam Penceresi */
+        .horror-popup {
+            box-shadow: 0 0 35px rgba(220, 38, 38, 0.95), 8px 8px 0px #000000;
+            border: 3px solid #dc2626;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-slate-800 relative">
+
+    <!-- ÜST RESMİ BİLGİ ÇUBUĞU -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+        <div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5 font-medium"><i class="fa-regular fa-newspaper text-amber-400"></i> Dijital Kampüs Baskısı • Özel Sayı</span>
+                <span class="hidden sm:inline text-slate-600">|</span>
+                <span class="hidden sm:flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-amber-400"></i> Küçükçekmece / İstanbul</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-[11px] font-semibold">
+                    <i class="fa-solid fa-circle-check mr-1"></i>Resmi Okul E-Gazetesi
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAZETE BAŞLIĞI (HEADER) -->
+    <header class="bg-white border-b-2 border-slate-900 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-6 md:py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Okul Arması ve Başlık -->
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-800 flex items-center justify-center text-amber-400 shadow-md border-2 border-amber-400/40 shrink-0">
+                        <i class="fa-solid fa-graduation-cap text-3xl md:text-4xl"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <span class="text-xs font-bold tracking-widest uppercase text-indigo-700 block mb-1">T.C. Millî Eğitim Bakanlığı • Öğrenci Kulübü Yayını</span>
+                        <h1 class="serif-font text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+                            Toki Avrupa Konutları Orta Okulu
+                        </h1>
+                        <p class="text-sm text-slate-500 font-medium mt-0.5">Resmi Öğrenci Gazetesi ve Haber Portalı</p>
+                    </div>
+                </div>
+
+                <!-- Gazete Künye Kutusu -->
+                <div class="hidden lg:flex flex-col items-end text-right bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-600">
+                    <span class="font-bold text-slate-800">Okul Medya & Basın Kulübü</span>
+                    <span>Sorumlu Yazı İşleri</span>
+                    <span class="text-[11px] text-slate-400 mt-1">Yayın Kodu: #TAK-2026-ORM</span>
+                </div>
+            </div>
+
+            <!-- Gazete Alt Menü Şeridi -->
+            <div class="mt-6 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-500">
+                <div class="flex items-center gap-6">
+                    <span class="text-indigo-700 border-b-2 border-indigo-700 pb-1">Manşet & Özel Dosya</span>
+                </div>
+                <div class="text-slate-400">
+                    Bu Sayıda Sadece 1 Yazı Bulunmaktadır
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ANA İÇERİK: SADECE TEK BİR YAZI ("ORMAN" - YAZAR: KİM) -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8 md:py-10">
+        <article class="bg-white rounded-3xl shadow-xl border border-slate-200/90 overflow-hidden relative">
+            
+            <!-- Üst Kategori ve Başlık -->
+            <div class="p-6 sm:p-10 pb-0">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-fire-flame-curved mr-1"></i> Okul Gündemi • Özel Haber
+                    </span>
+                    <span class="text-slate-400 text-xs font-medium flex items-center gap-1">
+                        <i class="fa-regular fa-clock"></i> Az önce güncellendi
+                    </span>
+                </div>
+
+                <!-- Tek Makale Başlığı: Orman -->
+                <h2 class="serif-font text-3xl sm:text-5xl font-black text-slate-900 leading-tight mb-6">
+                    Orman
+                </h2>
+
+                <!-- Yazar: Kim -->
+                <div class="flex items-center justify-between border-y border-slate-100 py-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-lg shadow">
+                            K
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-900">
+                                Yazar: <span class="text-indigo-700 underline decoration-indigo-300">Kim</span>
+                            </div>
+                            <div class="text-xs text-slate-500">
+                                Toki Avrupa Konutları Orta Okulu • Araştırma Köşesi
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400 text-sm">
+                        <span class="bg-slate-100 px-3 py-1 rounded-lg text-xs font-semibold text-slate-600">
+                            <i class="fa-solid fa-eye mr-1 text-indigo-600"></i> 2.914 Okunma
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Sadece İlk Cümle Görünür, Geri Kalan Tüm Yazı Bulanık -->
+                <p class="serif-font text-lg sm:text-xl text-slate-700 leading-relaxed mb-4 font-medium">
+                    Okulumuzun arka bahçesine bakan korulukta son günlerde yaşanan gizemli olayların ve herkesin birbirine fısıldadığı <b>"Orman"</b> dosyasının tüm detayları...
+                </p>
+            </div>
+
+            <!-- BULANIK (GİZLENMİŞ) METİN ALANI -->
+            <div class="relative px-6 sm:px-10 pb-14">
+                <div class="blurred-content space-y-4 serif-font text-slate-600 leading-relaxed">
+                    <p>
+                        Geçtiğimiz Cuma günü okul çıkış saatinden hemen sonra nöbetçi öğrencilerin koruluk sınırında kaydettiği görüntülerde, ağaçların arasında duran bembeyaz yüzlü silüetin kime ait olduğu açıkça görülüyor. Okul idaresinin incelemeye aldığı defterin 14. sayfasında yazan isimler tüm sınıflarda büyük şok etkisi yarattı.
+                    </p>
+                    <div class="my-6 h-60 bg-slate-200 rounded-2xl flex items-center justify-center">
+                        <span class="text-slate-400">Sansürlenmiş Kanıt Fotoğrafı</span>
+                    </div>
+                    <p>
+                        Özellikle 7. ve 8. sınıf koridorlarında dolaşan söylentilere göre, ormanda bulunan çantanın içinden çıkan notta sadece tek bir cümle yazıyordu. İşte o listede yer alan isimler, güvenlik kamerası kayıtları ve olayın perde arkası:
+                    </p>
+                    <p>
+                        1. Koruluk girişindeki güvenlik kamerasının saat 18:42'de kaydettiği karaltı ve sesler.<br>
+                        2. Ağaç gövdesine kazınan mesajın gerçek sahibi ve sınıftaki izler.<br>
+                        3. Pazartesi sabahı tahtaya tebeşirle yazılan gizemli notun tam metni.
+                    </p>
+                </div>
+
+                <!-- Bulanık Yazı Üzerindeki Çerez Kilidi -->
+                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-white/40 flex flex-col items-center justify-center p-6 text-center">
+                    <div class="bg-white/95 backdrop-blur-md border-2 border-indigo-100 shadow-2xl rounded-2xl p-6 max-w-md w-full">
+                        <div class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-1">Yazının Tamamı Çerez Onayı Gerektiriyor</h3>
+                        <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+                            <b>Yazar: Kim</b> tarafından kaleme alınan <b>"Orman"</b> başlıklı haberin devamını ve fotoğrafları görüntülemek için lütfen çerezleri kabul edin.
+                        </p>
+                        <button onclick="triggerJeffJumpscare()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-lg shadow-indigo-500/20 transition transform active:scale-95 cursor-pointer">
+                            <i class="fa-solid fa-cookie-bite mr-1.5"></i> Çerezleri Kabul Et ve Yazıyı Aç
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- RESMİ GÖRÜNÜMLÜ ÇEREZ POLİTİKASI MODALI (HERHANGİ BİR BUTONA BASINCA JEFF THE KILLER PATLAR) -->
+    <div id="cookieBanner" class="fixed inset-0 z-40 p-4 sm:p-6 bg-slate-950/65 backdrop-blur-sm flex items-end sm:items-center justify-center">
+        <div class="bg-white border-2 border-slate-200 rounded-3xl shadow-2xl max-w-xl w-full p-6 sm:p-8 relative">
+            <!-- Sağ Üst Kapat Tuşu da Jumpscare Tetikler -->
+            <button onclick="triggerJeffJumpscare()" title="Kapat" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-start sm:items-center gap-4 mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                    <i class="fa-solid fa-cookie-bite"></i>
+                </div>
+                <div class="pr-6">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-800 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded">Zorunlu Aydınlatma Metni</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">
+                        Çerez Politikası ve Okuyucu Onayı
+                    </h3>
+                </div>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                <b>Toki Avrupa Konutları Orta Okulu Resmi Öğrenci Gazetesi</b>'nde yer alan <b>"Orman" (Yazar: Kim)</b> başlıklı makalenin sansürsüz tam metnini okumak için çerezleri kabul etmelisiniz.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <button onclick="triggerJeffJumpscare()" class="w-full sm:flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center justify-center gap-2 text-sm cursor-pointer">
+                    <i class="fa-solid fa-check-double"></i>
+                    Tüm Çerezleri Kabul Et
+                </button>
+                <button onclick="triggerJeffJumpscare()" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3.5 px-5 rounded-xl transition text-sm cursor-pointer">
+                    Zorunlu Çerezler
+                </button>
+                <button onclick="triggerJeffJumpscare()" class="w-full sm:w-auto text-slate-400 hover:text-slate-600 font-medium py-2 px-3 text-xs cursor-pointer">
+                    Reddet
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- TAM EKRAN JEFF THE KILLER JUMPSCARE + SPAM PENCERELERİ KATMANI            -->
+    <!-- ========================================================================= -->
+    <div id="jumpscareContainer" class="fixed inset-0 z-[9999] hidden bg-black overflow-hidden select-none cursor-none">
+        
+        <!-- Tam Ekran Korkunç Jeff the Killer İllüstrasyonu (SVG + Dinamik Göz/Ağız/Kan Efektleri) -->
+        <div id="jeffVisualWrapper" class="absolute inset-0 flex items-center justify-center jeff-strobe-fx">
+            <svg id="jeffMainSvg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" class="w-screen h-screen object-cover jeff-lunge-fx">
+                <defs>
+                    <!-- Korkunç Soluk Beyaz Deri Gradyanı -->
+                    <radialGradient id="bleachedSkin" cx="50%" cy="46%" r="48%">
+                        <stop offset="0%" stop-color="#ffffff" />
+                        <stop offset="55%" stop-color="#f1f5f9" />
+                        <stop offset="80%" stop-color="#94a3b8" />
+                        <stop offset="100%" stop-color="#09090b" />
+                    </radialGradient>
+
+                    <!-- Kanlı Karanlık Arka Plan -->
+                    <radialGradient id="horrorBg" cx="50%" cy="50%" r="70%">
+                        <stop offset="0%" stop-color="#450a0a" />
+                        <stop offset="50%" stop-color="#09090b" />
+                        <stop offset="100%" stop-color="#000000" />
+                    </radialGradient>
+
+                    <!-- Yanık Siyah Göz Çukuru Gradyanı -->
+                    <radialGradient id="burntSocket" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#000000" />
+                        <stop offset="70%" stop-color="#09090b" />
+                        <stop offset="90%" stop-color="#450a0a" />
+                        <stop offset="100%" stop-color="transparent" />
+                    </radialGradient>
+
+                    <!-- Kesik Glasgow Gülüşü Kan Gradyanı -->
+                    <linearGradient id="bloodCarve" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#450a0a" />
+                        <stop offset="50%" stop-color="#dc2626" />
+                        <stop offset="100%" stop-color="#18181b" />
+                    </linearGradient>
+
+                    <!-- Pürüzlü Korku Filtresi -->
+                    <filter id="grungeDistort">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+                    </filter>
+                </defs>
+
+                <!-- Arka Plan -->
+                <rect width="800" height="800" fill="url(#horrorBg)" />
+
+                <!-- Arka Plan Kan Sıçramaları -->
+                <circle cx="120" cy="150" r="85" fill="#7f1d1d" opacity="0.45" filter="url(#grungeDistort)" />
+                <circle cx="690" cy="180" r="110" fill="#991b1b" opacity="0.4" filter="url(#grungeDistort)" />
+                <circle cx="640" cy="670" r="130" fill="#7f1d1d" opacity="0.5" filter="url(#grungeDistort)" />
+                <circle cx="140" cy="650" r="95" fill="#991b1b" opacity="0.45" filter="url(#grungeDistort)" />
+
+                <!-- Jeff'in Dağınık Siyah Saçları (Arka Katman) -->
+                <path d="M 80 800 C 40 500, 50 150, 200 40 C 320 -20, 480 -20, 600 40 C 750 150, 760 500, 720 800 Z" fill="#050505" />
+
+                <!-- Bembeyaz Yanık/Ağartılmış Yüz -->
+                <path d="M 175 180 C 165 430, 210 670, 400 735 C 590 670, 635 430, 625 180 C 610 60, 190 60, 175 180 Z" fill="url(#bleachedSkin)" filter="url(#grungeDistort)" />
+
+                <!-- Yüzdeki Kırışıklıklar, Damarlar ve Kan Lekeleri -->
+                <path d="M 330 220 Q 400 265 470 220" stroke="#475569" stroke-width="5" fill="none" opacity="0.7" />
+                <path d="M 350 245 Q 400 280 450 245" stroke="#334155" stroke-width="3" fill="none" opacity="0.7" />
+                <path d="M 195 360 L 235 420 L 210 490" stroke="#991b1b" stroke-width="3" fill="none" opacity="0.55" />
+                <path d="M 605 360 L 565 420 L 590 490" stroke="#991b1b" stroke-width="3" fill="none" opacity="0.55" />
+
+                <!-- SOL GÖZ: Yanmış Siyah Göz Kapakları ve Dev Açık Göz -->
+                <g>
+                    <!-- Siyah Yanık Halka -->
+                    <ellipse cx="285" cy="315" rx="95" ry="78" fill="url(#burntSocket)" filter="url(#grungeDistort)" />
+                    <ellipse cx="285" cy="315" rx="76" ry="56" fill="#000000" stroke="#450a0a" stroke-width="6" />
+                    <!-- Kanlı Göz Akı (Kırpmayan Dev Beyaz Göz) -->
+                    <ellipse cx="285" cy="315" rx="64" ry="44" fill="#ffffff" />
+                    <!-- Göz İçi Kan Damarları -->
+                    <path d="M 225 310 L 250 315 M 230 295 L 255 305 M 345 310 L 320 315 M 340 330 L 315 322" stroke="#dc2626" stroke-width="2.5" />
+                    <!-- Küçücük Delici Göz Bebeği -->
+                    <circle cx="290" cy="315" r="13" fill="#000000" />
+                    <circle cx="290" cy="315" r="4" fill="#dc2626" />
+                    <circle cx="285" cy="310" r="3" fill="#ffffff" />
+                </g>
+
+                <!-- SAĞ GÖZ: Yanmış Siyah Göz Kapakları ve Dev Açık Göz -->
+                <g>
+                    <!-- Siyah Yanık Halka -->
+                    <ellipse cx="515" cy="315" rx="95" ry="78" fill="url(#burntSocket)" filter="url(#grungeDistort)" />
+                    <ellipse cx="515" cy="315" rx="76" ry="56" fill="#000000" stroke="#450a0a" stroke-width="6" />
+                    <!-- Kanlı Göz Akı -->
+                    <ellipse cx="515" cy="315" rx="64" ry="44" fill="#ffffff" />
+                    <!-- Göz İçi Kan Damarları -->
+                    <path d="M 455 310 L 480 315 M 460 295 L 485 305 M 575 310 L 550 315 M 570 330 L 545 322" stroke="#dc2626" stroke-width="2.5" />
+                    <!-- Küçücük Delici Göz Bebeği -->
+                    <circle cx="510" cy="315" r="13" fill="#000000" />
+                    <circle cx="510" cy="315" r="4" fill="#dc2626" />
+                    <circle cx="505" cy="310" r="3" fill="#ffffff" />
+                </g>
+
+                <!-- Burun Delikleri (Soluk, Neredeyse İskeletimsi) -->
+                <path d="M 382 415 C 375 435, 390 445, 396 435 Z" fill="#1e293b" />
+                <path d="M 418 415 C 425 435, 410 445, 404 435 Z" fill="#1e293b" />
+                <path d="M 390 360 L 383 425 M 410 360 L 417 425" stroke="#cbd5e1" stroke-width="3" fill="none" />
+
+                <!-- KULAKTAN KULAĞA KAZINMIŞ GLASGOW GÜLÜŞÜ (CARVED SMILE) -->
+                <g>
+                    <!-- Dış Kanlı Yara Kesikleri (Yanaklara Kadar Uzanan) -->
+                    <path d="M 160 390 Q 400 710 640 390 Q 400 775 160 390 Z" fill="url(#bloodCarve)" stroke="#7f1d1d" stroke-width="10" filter="url(#grungeDistort)" />
+                    
+                    <!-- Ağız Boşluğu -->
+                    <path d="M 195 430 Q 400 675 605 430 Q 400 720 195 430 Z" fill="#090000" stroke="#dc2626" stroke-width="5" />
+
+                    <!-- Diş Eti Çizgisi -->
+                    <path d="M 225 458 Q 400 640 575 458" stroke="#991b1b" stroke-width="10" fill="none" />
+
+                    <!-- Üst Dişler (Büyük, Sararmış/Kanlı Korkunç Diş Dizisi) -->
+                    <g fill="#f8fafc" stroke="#18181b" stroke-width="3.5">
+                        <polygon points="240,465 262,485 256,535 234,510" />
+                        <polygon points="262,485 288,504 282,560 256,535" />
+                        <polygon points="288,504 316,520 312,580 282,560" />
+                        <polygon points="316,520 345,532 342,596 312,580" />
+                        <polygon points="345,532 373,540 371,606 342,596" />
+                        <polygon points="373,540 400,543 400,610 371,606" />
+                        <polygon points="400,543 427,540 429,606 400,610" />
+                        <polygon points="427,540 455,532 458,596 429,606" />
+                        <polygon points="455,532 484,520 488,580 458,596" />
+                        <polygon points="484,520 512,504 518,560 488,580" />
+                        <polygon points="512,504 538,485 544,535 518,560" />
+                        <polygon points="538,485 560,465 566,510 544,535" />
+                    </g>
+
+                    <!-- Alt Dişler -->
+                    <g fill="#e2e8f0" stroke="#09090b" stroke-width="3.5">
+                        <polygon points="256,565 282,585 288,535 262,515" />
+                        <polygon points="282,585 312,605 316,550 288,535" />
+                        <polygon points="312,605 342,622 345,568 316,550" />
+                        <polygon points="342,622 371,632 373,576 345,568" />
+                        <polygon points="371,632 400,636 400,580 373,576" />
+                        <polygon points="400,636 429,632 427,576 400,580" />
+                        <polygon points="429,632 458,622 455,568 427,576" />
+                        <polygon points="458,622 488,605 484,550 455,568" />
+                        <polygon points="488,605 518,585 512,535 484,550" />
+                        <polygon points="518,585 544,565 538,515 512,535" />
+                    </g>
+
+                    <!-- Yanak Kesiklerinden Akan Kan Damlaları -->
+                    <path d="M 162 392 C 155 460, 165 520, 160 590" stroke="#dc2626" stroke-width="10" stroke-linecap="round" fill="none" />
+                    <path d="M 185 425 C 180 490, 190 550, 185 630" stroke="#991b1b" stroke-width="7" stroke-linecap="round" fill="none" />
+                    <path d="M 638 392 C 645 460, 635 520, 640 590" stroke="#dc2626" stroke-width="10" stroke-linecap="round" fill="none" />
+                    <path d="M 615 425 C 620 490, 610 550, 615 630" stroke="#991b1b" stroke-width="7" stroke-linecap="round" fill="none" />
+                    <path d="M 350 645 L 348 735 M 400 655 L 402 760 M 455 642 L 458 725" stroke="#dc2626" stroke-width="8" stroke-linecap="round" fill="none" />
+                </g>
+
+                <!-- Yüzün Üzerine Düşen Dağınık Siyah Saç Telleri (Ön Katman) -->
+                <path d="M 140 120 L 210 310 L 235 150 L 310 260 L 350 110 L 405 245 L 455 110 L 505 270 L 565 140 L 600 300 L 660 120 C 600 10, 200 10, 140 120 Z" fill="#050505" />
+                <path d="M 155 180 C 120 380, 130 580, 95 790 L 185 790 C 165 590, 185 410, 205 240 Z" fill="#050505" />
+                <path d="M 645 180 C 680 380, 670 580, 705 790 L 615 790 C 635 590, 615 410, 595 240 Z" fill="#050505" />
+            </svg>
+        </div>
+
+        <!-- Ortada Çakan Dev Korku Yazısı -->
+        <div class="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
+            <h1 id="centerScareText" class="mono-font text-5xl sm:text-8xl md:text-9xl font-black text-red-600 tracking-tighter uppercase text-center drop-shadow-[0_10px_35px_rgba(0,0,0,1)] glitch-fx px-4">
+                GO TO SLEEP!
+            </h1>
+        </div>
+
+        <!-- Tam Ekran Spam Pencerelerinin Çoğalacağı Katman -->
+        <div id="spamWindowsLayer" class="absolute inset-0 z-40 pointer-events-none overflow-hidden"></div>
+
+        <!-- Gizli Acil Durdurma Butonu (Sağ alt köşede çok silik veya ESC x3) -->
+        <button onclick="resetPrankPage(event)" class="fixed bottom-2 right-2 z-50 bg-black/40 hover:bg-red-700 text-white/25 hover:text-white text-[10px] px-2.5 py-1 rounded cursor-pointer pointer-events-auto">
+            Sıfırla (ESC x3)
+        </button>
+    </div>
+
+    <script>
+        let isJumpscareActive = false;
+        let spamTimer = null;
+        let phraseTimer = null;
+        let audioCtx = null;
+        let sirenInterval = null;
+        let escCounter = 0;
+
+        // Mini Jeff İkonu (Spam Pencerelerinin İçinde Çıkar)
+        const miniJeffAvatarSvg = `
+            <svg viewBox="0 0 100 100" class="w-12 h-12 rounded border border-red-600 bg-black shrink-0">
+                <rect width="100" height="100" fill="#09090b"/>
+                <ellipse cx="50" cy="52" rx="36" ry="42" fill="#f8fafc"/>
+                <path d="M 12 30 Q 50 -5 88 30 L 75 45 L 55 22 L 40 42 L 25 25 Z" fill="#000"/>
+                <ellipse cx="35" cy="46" rx="11" ry="9" fill="#000"/>
+                <ellipse cx="35" cy="46" rx="7" ry="5" fill="#fff"/>
+                <circle cx="35" cy="46" r="2.5" fill="#000"/>
+                <ellipse cx="65" cy="46" rx="11" ry="9" fill="#000"/>
+                <ellipse cx="65" cy="46" rx="7" ry="5" fill="#fff"/>
+                <circle cx="65" cy="46" r="2.5" fill="#000"/>
+                <path d="M 22 64 Q 50 92 78 64 Q 50 98 22 64 Z" fill="#dc2626" stroke="#000" stroke-width="2"/>
+            </svg>
+        `;
+
+        // Spam Pencereleri İçin Korkunç Mesajlar
+        const spamMessages = [
+            { title: "JEFF THE KILLER.EXE", body: "GO TO SLEEP! UYUMA VAKTİ GELDİ!" },
+            { title: "ORMAN KİM?!", body: "KAMERAN AÇILDI! ŞU AN ARKANDA DURUYOR!" },
+            { title: "KRİTİK HATA: 0x666", body: "ÇEREZLERİ KABUL ETTİN! KAÇIŞ YOK!" },
+            { title: "TOKİ AVRUPA KONUTLARI", body: "KONUMUN TESPİT EDİLDİ! KAPIYI KİLİTLE!" },
+            { title: "SHHHHH...", body: "SADECE GÖZLERİNİ KAPAT VE UYU!" },
+            { title: "SİSTEM ELE GEÇİRİLDİ", body: "YAZAR 'KİM' SENİ İZLİYOR! ARKANA BAKMA!" }
+        ];
+
+        const centerPhrases = [
+            "GO TO SLEEP!",
+            "UYUMA VAKTİ GELDİ!",
+            "ARKANA BAKMA!",
+            "ORMAN SENİ İZLİYOR!",
+            "KAÇAMAZSIN!"
+        ];
+
+        // --- ÇOK KATMANLI KORKUNÇ ÇIĞLIK + WHITE NOISE + DİSONANS SES SENTEZLEYİCİ ---
+        function startJeffScreamAudio() {
+            try {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+
+                const masterGain = audioCtx.createGain();
+                masterGain.gain.setValueAtTime(0.95, audioCtx.currentTime);
+
+                // Distorsiyon (Sesi Yırtıcı ve Korkunç Hale Getirir)
+                const distortion = audioCtx.createWaveShaper();
+                function makeDistortionCurve(amount) {
+                    const k = typeof amount === 'number' ? amount : 50;
+                    const n_samples = 44100;
+                    const curve = new Float32Array(n_samples);
+                    const deg = Math.PI / 180;
+                    for (let i = 0; i < n_samples; ++i) {
+                        const x = i * 2 / n_samples - 1;
+                        curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
+                    }
+                    return curve;
+                }
+                distortion.curve = makeDistortionCurve(400);
+                distortion.oversample = '4x';
+
+                // 1. Katman: Yırtıcı Tiz Çığlık Osilatörleri
+                const screamOsc1 = audioCtx.createOscillator();
+                const screamOsc2 = audioCtx.createOscillator();
+                const screamOsc3 = audioCtx.createOscillator();
+
+                screamOsc1.type = 'sawtooth';
+                screamOsc2.type = 'square';
+                screamOsc3.type = 'sawtooth';
+
+                screamOsc1.frequency.setValueAtTime(1150, audioCtx.currentTime);
+                screamOsc1.frequency.exponentialRampToValueAtTime(2850, audioCtx.currentTime + 0.12);
+
+                screamOsc2.frequency.setValueAtTime(780, audioCtx.currentTime);
+                screamOsc2.frequency.exponentialRampToValueAtTime(1920, audioCtx.currentTime + 0.18);
+
+                screamOsc3.frequency.setValueAtTime(160, audioCtx.currentTime); // Alt korku bası
+
+                // Hızlı Titreme (Tremolo / FM Modülasyonu)
+                const modOsc = audioCtx.createOscillator();
+                const modGain = audioCtx.createGain();
+                modOsc.frequency.value = 48;
+                modGain.gain.value = 550;
+                modOsc.connect(modGain);
+                modGain.connect(screamOsc1.frequency);
+                modGain.connect(screamOsc2.frequency);
+
+                // 2. Katman: Patlayan Beyaz Gürültü (Static Burst)
+                const bufferSize = audioCtx.sampleRate * 2;
+                const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+                const whiteNoise = audioCtx.createBufferSource();
+                whiteNoise.buffer = noiseBuffer;
+                whiteNoise.loop = true;
+
+                const noiseGain = audioCtx.createGain();
+                noiseGain.gain.value = 0.55;
+
+                // Bağlantılar
+                screamOsc1.connect(distortion);
+                screamOsc2.connect(distortion);
+                screamOsc3.connect(distortion);
+                whiteNoise.connect(noiseGain);
+                noiseGain.connect(distortion);
+
+                distortion.connect(masterGain);
+                masterGain.connect(audioCtx.destination);
+
+                screamOsc1.start();
+                screamOsc2.start();
+                screamOsc3.start();
+                modOsc.start();
+                whiteNoise.start();
+
+                // Çığlık Frekanslarını Sürekli Kaotik Şekilde Değiştir
+                sirenInterval = setInterval(() => {
+                    if (audioCtx && audioCtx.state === 'running') {
+                        const now = audioCtx.currentTime;
+                        screamOsc1.frequency.setValueAtTime(900 + Math.random() * 2200, now);
+                        screamOsc2.frequency.setValueAtTime(450 + Math.random() * 1500, now);
+                        screamOsc3.frequency.setValueAtTime(90 + Math.random() * 180, now);
+                    }
+                }, 90);
+            } catch (e) {
+                console.warn("Web Audio başlatılamadı:", e);
+            }
+        }
+
+        // --- TAM EKRAN ZORLAMA ---
+        function enterFullscreenMode() {
+            const elem = document.documentElement;
+            try {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            } catch (err) {
+                console.warn("Tam ekran hatası:", err);
+            }
+        }
+
+        // --- EKRANA SAHTE JEFF SPAM PENCERELERİ FIRLATMA ---
+        function createSpamPopup() {
+            if (!isJumpscareActive) return;
+            const layer = document.getElementById('spamWindowsLayer');
+            const popup = document.createElement('div');
+            const item = spamMessages[Math.floor(Math.random() * spamMessages.length)];
+
+            const maxX = Math.max(10, window.innerWidth - 310);
+            const maxY = Math.max(10, window.innerHeight - 150);
+            const leftPos = Math.floor(Math.random() * maxX);
+            const topPos = Math.floor(Math.random() * maxY);
+            const angle = (Math.random() * 24 - 12).toFixed(1);
+
+            popup.style.left = `${leftPos}px`;
+            popup.style.top = `${topPos}px`;
+            popup.style.transform = `rotate(${angle}deg)`;
+
+            popup.className = "fixed w-72 sm:w-80 bg-zinc-950 text-white rounded-lg horror-popup overflow-hidden z-50 glitch-fx";
+            popup.innerHTML = `
+                <div class="bg-red-700 px-3 py-1.5 flex items-center justify-between text-xs font-black tracking-wider uppercase border-b border-red-500">
+                    <span class="flex items-center gap-1.5 text-white">
+                        <i class="fa-solid fa-skull text-yellow-300"></i> ${item.title}
+                    </span>
+                    <span class="bg-black text-red-500 px-1.5 py-0.5 rounded text-[10px] font-mono">X</span>
+                </div>
+                <div class="p-3 flex items-center gap-3 bg-black">
+                    ${miniJeffAvatarSvg}
+                    <div class="mono-font text-xs font-extrabold text-red-500 leading-snug">
+                        ${item.body}
+                    </div>
+                </div>
+                <div class="bg-zinc-900 px-3 py-1.5 flex justify-between items-center border-t border-red-900/80">
+                    <span class="text-[10px] text-red-400 font-mono">PID: 666</span>
+                    <span class="bg-red-600 text-white text-[10px] font-black px-3 py-0.5 rounded uppercase">GO TO SLEEP</span>
+                </div>
+            `;
+
+            layer.appendChild(popup);
+
+            // Çok fazla birikirse en eskisini silerek akıcılığı koru
+            if (layer.children.length > 42) {
+                layer.removeChild(layer.firstChild);
+            }
+        }
+
+        // --- ANA JEFF THE KILLER JUMPSCARE TETİKLEYİCİSİ ---
+        function triggerJeffJumpscare() {
+            if (isJumpscareActive) return;
+            isJumpscareActive = true;
+
+            // 1. Çerez penceresini gizle ve tam ekrana geç
+            document.getElementById('cookieBanner').classList.add('hidden');
+            enterFullscreenMode();
+
+            // 2. Jeff the Killer tam ekran sahnesini aç ve ekranı salla
+            const container = document.getElementById('jumpscareContainer');
+            container.classList.remove('hidden');
+            document.body.classList.add('chaos-shake');
+
+            // 3. Çok katmanlı korkunç çığlık sesini anında patlat
+            startJeffScreamAudio();
+
+            // 4. İlk anda 6 tane spam penceresi birden çıkart, sonra hızla çoğalt
+            for (let i = 0; i < 6; i++) createSpamPopup();
+            spamTimer = setInterval(createSpamPopup, 85);
+
+            // 5. Ortadaki yazıyı hızla değiştir
+            const centerText = document.getElementById('centerScareText');
+            phraseTimer = setInterval(() => {
+                centerText.textContent = centerPhrases[Math.floor(Math.random() * centerPhrases.length)];
+            }, 180);
+        }
+
+        // --- ACİL DURDURMA / SIFIRLAMA (ESC x3 veya Sağ Alt Gizli Buton) ---
+        function resetPrankPage(e) {
+            if (e) e.stopPropagation();
+            isJumpscareActive = false;
+            clearInterval(spamTimer);
+            clearInterval(phraseTimer);
+            clearInterval(sirenInterval);
+
+            if (audioCtx) {
+                audioCtx.close().catch(() => {});
+                audioCtx = null;
+            }
+
+            document.body.classList.remove('chaos-shake');
+            document.getElementById('jumpscareContainer').classList.add('hidden');
+            document.getElementById('spamWindowsLayer').innerHTML = '';
+            document.getElementById('cookieBanner').classList.remove('hidden');
+
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            }
+        }
+
+        // ESC tuşuna 3 kez basınca sıfırla
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isJumpscareActive) {
+                escCounter++;
+                if (escCounter >= 3) {
+                    escCounter = 0;
+                    resetPrankPage();
+                }
+            }
+        });
+
+        // Jumpscare sırasında ekrana tıklanırsa tekrar tam ekrana zorla ve ekstra spam patlat
+        window.addEventListener('click', () => {
+            if (isJumpscareActive) {
+                enterFullscreenMode();
+                for (let i = 0; i < 5; i++) createSpamPopup();
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+### Neler Değiştirildi?
+1. **Kurulum Ekranı Kaldırıldı:** Sayfa açıldığı anda doğrudan **Toki Avrupa Konutları Orta Okulu Resmi Öğrenci Gazetesi** ve çerez bildirim ekranı gelir.
+2. **Tek Yazı ("Orman" - Yazar: Kim):** Gazetede yalnızca **"Orman"** başlıklı ve yazarı **"Kim"** olan tek bir haber yer alır; ilk cümleden sonrası tamamen bulanıktır.
+3. **Tam Ekran Jeff the Killer & Spam:** Çerez penceresindeki **"Tüm Çerezleri Kabul Et"**, **"Zorunlu Çerezler"**, **"Reddet"** veya **"X"** tuşlarından herhangi birine basıldığı anda sayfa tam ekrana geçer, yüksek kontrastlı **Jeff the Killer** görseli, tiz çığlık/statik ses sentezi ve ekranı dolduran **"GO TO SLEEP! / UYUMA VAKTİ GELDİ!"** uyarı pencereleri (spam) başlar. (Durdurmak için `ESC` tuşuna 3 kez basabilir veya sağ alttaki silik sıfırlama butonuna tıklayabilirsiniz).
